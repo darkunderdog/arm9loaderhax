@@ -1,11 +1,11 @@
 #include <inttypes.h>
 
-#define BRIGHTNESS 0x39
+#define BRIGHTNESS 0x0
 #define FB_TOP_LEFT 0x18300000
 #define FB_TOP_RIGHT 0x18300000
 #define FB_BOTTOM 0x18346500
 
-void regSet();
+static inline void regSet();
 
 void __attribute__ ((naked)) a11Entry()
 {
@@ -13,7 +13,7 @@ void __attribute__ ((naked)) a11Entry()
     regSet();
 }
 
-void regSet()
+static inline void regSet()
 {
 
     volatile uint32_t *entry = (uint32_t *)0x1FFFFFF8;
